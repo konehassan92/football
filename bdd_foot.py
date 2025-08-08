@@ -23,7 +23,7 @@ print(fbref.__doc__)
 
 # # BDD
 
-# In[ ]:
+# In[5]:
 
 
 stat_joueurs = ['standard', 'keeper', 'keeper_adv', 'shooting', 'passing', 'passing_types', 
@@ -65,7 +65,7 @@ for theme in stat_joueurs:
 print("Tables créées:", tables_crees)
 
 
-# In[ ]:
+# In[6]:
 
 
 stat_equipes = ['standard', 'keeper', 'keeper_adv', 'shooting', 'passing', 'passing_types', 'goal_shot_creation', 'defense', 'possession', 'playing_time', 'misc']
@@ -106,7 +106,7 @@ print("Tables créées:", tables_crees)
 
 # ##### Nom des nouvelles colonnes
 
-# In[ ]:
+# In[9]:
 
 
 col_standard = [
@@ -247,28 +247,28 @@ col_actions_creation = [
 
 # ## Joueurs
 
-# In[ ]:
+# In[11]:
 
 
 joueurs_standard.columns = col_standard
 joueurs_standard.columns
 
 
-# In[ ]:
+# In[12]:
 
 
 joueurs_keeper.columns = col_gardien
 joueurs_keeper.columns
 
 
-# In[ ]:
+# In[14]:
 
 
-joueurs_goal_shot_creation.columns = col_tirs_creation
+joueurs_goal_shot_creation.columns = col_actions_creation
 joueurs_goal_shot_creation.columns
 
 
-# In[ ]:
+# In[16]:
 
 
 import nbformat
