@@ -3,7 +3,7 @@
 
 # # Librairies
 
-# In[26]:
+# In[80]:
 
 
 import soccerdata as sd
@@ -12,7 +12,7 @@ from datetime import datetime, date, timedelta
 import os
 
 
-# In[11]:
+# In[81]:
 
 
 print(sd.FBref())
@@ -23,7 +23,7 @@ print(fbref.__doc__)
 
 # # BDD
 
-# In[18]:
+# In[ ]:
 
 
 stat_joueurs = ['standard', 'keeper', 'keeper_adv', 'shooting', 'passing', 'passing_types', 
@@ -65,7 +65,7 @@ for theme in stat_joueurs:
 print("Tables créées:", tables_crees)
 
 
-# In[66]:
+# In[ ]:
 
 
 stat_equipes = ['standard', 'keeper', 'keeper_adv', 'shooting', 'passing', 'passing_types', 'goal_shot_creation', 'defense', 'possession', 'playing_time', 'misc']
@@ -102,8 +102,27 @@ for theme in stat_equipes:
 print("Tables créées:", tables_crees)
 
 
-# In[71]:
+# In[ ]:
 
 
-get_ipython().system('jupyter nbconvert --to script bdd_football.py')
+equipes_standard
+
+
+# In[ ]:
+
+
+import nbformat
+from nbconvert import PythonExporter
+
+notebook_filename = "bdd_foot.ipynb"
+script_filename = "bdd_foot.py"
+
+with open(notebook_filename) as f:
+    nb = nbformat.read(f, as_version=4)
+
+exporter = PythonExporter()
+source, _ = exporter.from_notebook_node(nb)
+
+with open(script_filename, "w") as f:
+    f.write(source)
 
