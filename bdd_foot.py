@@ -266,23 +266,3 @@ joueurs_keeper.columns
 
 joueurs_goal_shot_creation.columns = col_actions_creation
 joueurs_goal_shot_creation.columns
-
-
-# In[16]:
-
-
-import nbformat
-from nbconvert import PythonExporter
-
-notebook_filename = "bdd_foot.ipynb"
-script_filename = "bdd_foot.py"
-
-with open(notebook_filename) as f:
-    nb = nbformat.read(f, as_version=4)
-
-exporter = PythonExporter()
-source, _ = exporter.from_notebook_node(nb)
-
-with open(script_filename, "w") as f:
-    f.write(source)
-
