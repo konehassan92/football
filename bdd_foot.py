@@ -3,7 +3,7 @@
 
 # # Librairies
 
-# In[80]:
+# In[2]:
 
 
 import soccerdata as sd
@@ -12,7 +12,7 @@ from datetime import datetime, date, timedelta
 import os
 
 
-# In[81]:
+# In[3]:
 
 
 print(sd.FBref())
@@ -23,7 +23,7 @@ print(fbref.__doc__)
 
 # # BDD
 
-# In[83]:
+# In[ ]:
 
 
 stat_joueurs = ['standard', 'keeper', 'keeper_adv', 'shooting', 'passing', 'passing_types', 
@@ -65,7 +65,7 @@ for theme in stat_joueurs:
 print("Tables créées:", tables_crees)
 
 
-# In[84]:
+# In[ ]:
 
 
 stat_equipes = ['standard', 'keeper', 'keeper_adv', 'shooting', 'passing', 'passing_types', 'goal_shot_creation', 'defense', 'possession', 'playing_time', 'misc']
@@ -106,7 +106,7 @@ print("Tables créées:", tables_crees)
 
 # ##### Nom des nouvelles colonnes
 
-# In[157]:
+# In[ ]:
 
 
 col_standard = [
@@ -247,28 +247,28 @@ col_actions_creation = [
 
 # ## Joueurs
 
-# In[123]:
+# In[ ]:
 
 
 joueurs_standard.columns = col_standard
 joueurs_standard.columns
 
 
-# In[135]:
+# In[ ]:
 
 
 joueurs_keeper.columns = col_gardien
 joueurs_keeper.columns
 
 
-# In[153]:
+# In[ ]:
 
 
 joueurs_goal_shot_creation.columns = col_tirs_creation
 joueurs_goal_shot_creation.columns
 
 
-# In[86]:
+# In[ ]:
 
 
 import nbformat
