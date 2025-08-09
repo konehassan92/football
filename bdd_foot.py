@@ -671,12 +671,11 @@ df_joueurs.columns
 df_joueurs["date_chargement"] = datetime.now().strftime("%Y-%m-%d")
 
 
-# In[14]:
+# In[27]:
 
 
 #Exemple de selection
 df = df_joueurs[key_cols + df_joueurs.filter(regex=r'^types_passes').columns.tolist()]
 print(df["ligue"].unique())
 print(df["equipe"].unique())
-df[df["equipe"].str.contains("Real Madrid")]
-
+df[df["equipe"].str.contains("Marseille")]
