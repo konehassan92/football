@@ -6,7 +6,7 @@
 # In[ ]:
 
 
-pip install soccerdata
+!pip install soccerdata
 
 
 # In[2]:
