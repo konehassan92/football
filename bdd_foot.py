@@ -6,7 +6,14 @@
 # In[ ]:
 
 
-!pip install soccerdata
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Exemple : installer pandas
+install("soccerdata")
 
 
 # In[2]:
