@@ -3,6 +3,12 @@
 
 # # Librairies
 
+# In[ ]:
+
+
+pip install soccerdata
+
+
 # In[2]:
 
 
@@ -655,7 +661,7 @@ print("Colonnes joueurs_misc :", joueurs_misc.columns.tolist())
 
 # # Featuring engeniering
 
-# In[13]:
+# In[86]:
 
 
 # Extraction des DataFrames renommés dans une liste
@@ -668,10 +674,16 @@ for df in dfs_renamed[1:]:
 
 # Afficher les premières colonnes du résultat pour vérification
 df_joueurs.columns
-df_joueurs["date_chargement"] = datetime.now().strftime("%Y-%m-%d")
+df_joueurs["date_chargement"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
-# In[83]:
+# In[92]:
+
+
+df_joueurs
+
+
+# In[90]:
 
 
 #Exemple de selection
@@ -683,7 +695,7 @@ df[df["equipe"].str.contains("Marseille")]
 
 # # Export sur Supabase en ligne
 
-# In[81]:
+# In[94]:
 
 
 from supabase import create_client, Client
