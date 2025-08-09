@@ -671,7 +671,7 @@ df_joueurs.columns
 df_joueurs["date_chargement"] = datetime.now().strftime("%Y-%m-%d")
 
 
-# In[27]:
+# In[83]:
 
 
 #Exemple de selection
@@ -679,3 +679,37 @@ df = df_joueurs[key_cols + df_joueurs.filter(regex=r'^types_passes').columns.tol
 print(df["ligue"].unique())
 print(df["equipe"].unique())
 df[df["equipe"].str.contains("Marseille")]
+
+
+# # Export sur Supabase en ligne
+
+# In[81]:
+
+
+from supabase import create_client, Client
+import pandas as pd
+
+key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlcWx5bnV1cnR2YWZ2amhhc2VpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NDc3MzA1NSwiZXhwIjoyMDcwMzQ5MDU1fQ.JNdpPJGyvL_zoEJEkAQQtNGMSA80pQwJMu33o2A4nyo"
+url = "https://seqlynuurtvafvjhasei.supabase.co"
+
+supabase: Client = create_client(url, key)
+
+batch_size = 100
+
+# Remplace les NaN par None pour éviter erreur JSON
+records = df_joueurs.where(pd.notnull(df_joueurs), None).to_dict(orient='records')
+
+for i in range(0, len(records), batch_size):
+    batch = records[i:i+batch_size]
+    response = supabase.table("joueurs").insert(batch).execute()
+
+    # Gestion erreur selon attributs disponibles
+    if hasattr(response, "error") and response.error is not None:
+        print(f"Erreur lors de l'insertion batch {i} - {i+len(batch)} :", response.error)
+        break
+    elif hasattr(response, "status_code") and response.status_code >= 400:
+        print(f"Erreur HTTP {response.status_code} lors de l'insertion batch {i} - {i+len(batch)}")
+        break
+    else:
+        print(f"Lignes {i} à {i+len(batch)} insérées avec succès.")
+
